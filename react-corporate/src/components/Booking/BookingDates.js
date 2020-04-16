@@ -5,9 +5,9 @@ class BookingDates extends Component {
     return (
       <section>
         <label>Check-in</label>
-        <input type="date" value="2020-10-20" />
+        <input type="date" defaultValue="2020-10-20" />
         <label>Check-out</label>
-        <input type="date" value="2020-10-22" />
+        <input type="date" defaultValue="2020-10-22" />
       </section>
     );
   }

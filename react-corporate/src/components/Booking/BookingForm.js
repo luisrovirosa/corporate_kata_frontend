@@ -6,10 +6,8 @@ import EmployeeSelector from './EmployeeSelector';
 class HotelSelector extends Component {
   render() {
     return (
-      <select>
-        <option value="121221" selected>
-          Four Seasons Hawai beach
-        </option>
+      <select defaultValue="121221">
+        <option value="121221">Four Seasons Hawai beach</option>
       </select>
     );
   }
@@ -26,6 +24,9 @@ class Button extends Component {
 }
 
 class BookingForm extends Component {
+  handleSubmit = (event) => {
+    event.preventDefault();
+  };
   /*  @TODO:
   1- Empleado
   2- Hotel
@@ -34,7 +35,7 @@ class BookingForm extends Component {
   5- Confirmar */
   render() {
     return (
-      <form>
+      <form onSubmit={this.handleSubmit}>
         <h1>BookingForm</h1>
         <div>
           <EmployeeSelector></EmployeeSelector>
