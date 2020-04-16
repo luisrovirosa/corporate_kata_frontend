@@ -8,7 +8,7 @@ function BookingApp() {
   const [booking, setBooking] = useState(undefined);
 
   const processForm = (booking) => {
-    setBooking(bookHotelRoom(booking));
+    bookHotelRoom(booking).then(setBooking);
   }
 
   return (

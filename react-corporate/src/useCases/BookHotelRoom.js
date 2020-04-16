@@ -1,6 +1,5 @@
+import BookingRepository from '../infrastructure/BookingRepository';
 
 export default function bookHotelRoom(booking) {
-    booking.id = 'ASDFG-123';
-
-    return booking;
+    return (new BookingRepository()).save(booking);
 }
