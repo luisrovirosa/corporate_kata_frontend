@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState, useEffect } from 'react';
 import BookingDates from './BookingDates';
 import RoomType from './RoomType';
 import EmployeeSelector from './EmployeeSelector';
@@ -17,6 +17,17 @@ class HotelSelector extends Component {
 class Button extends Component {
   render() {
     return <button>{this.props.children}</button>;
+  }
+}
+
+class BookingConfirmation extends Component {
+  render() {
+    return (
+      <>
+        <h1>Tu reserva se ha confirmado</h1>
+        <p>Localizador de tu reserva: {this.props.bookingId}</p>
+      </>
+    )
   }
 }
 
@@ -39,15 +50,13 @@ class BookingForm extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    const booking = bookHotelRoom(
+    this.props.processForm(
       this.state.employeeId,
       this.state.hotelId,
       this.state.roomTypeId,
       this.state.checkIn,
       this.state.checkOut
     );
-
-    console.log(booking);
   };
 
   setEmployee = (employeeId) => {
@@ -56,35 +65,46 @@ class BookingForm extends Component {
     });
   };
 
-  /*  @TODO:
-  1- Empleado
-  2- Hotel
-  3- RoomType
-  4- Check in / out
-  5- Confirmar */
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <h1>BookingForm</h1>
-        <div>
-          <EmployeeSelector
-            value={this.state.employeeId}
-            onChange={this.setEmployee}
-          ></EmployeeSelector>
-        </div>
-        <div>
-          <HotelSelector></HotelSelector>
-        </div>
-        <div>
-          <RoomType></RoomType>
-        </div>
-        <div>
-          <BookingDates></BookingDates>
-        </div>
-        <Button>Book</Button>
-      </form>
+      <>
+        <form onSubmit={this.handleSubmit}>
+          <h1>BookingForm</h1>
+          <div>
+            <EmployeeSelector
+              value={this.state.employeeId}
+              onChange={this.setEmployee}
+            ></EmployeeSelector>
+          </div>
+          <div>
+            <HotelSelector></HotelSelector>
+          </div>
+          <div>
+            <RoomType></RoomType>
+          </div>
+          <div>
+            <BookingDates></BookingDates>
+          </div>
+          <Button>Book</Button>
+        </form>
+      </>
     );
   }
 }
 
-export default BookingForm;
+
+function BookingApp() {
+  const [booking, setBooking] = useState(undefined);
+
+  const processForm = (...args) => {
+    setBooking(bookHotelRoom(...args))
+  }
+
+  return (
+    booking
+      ? <BookingConfirmation bookingId={booking} />
+      : <BookingForm processForm={processForm}/>
+  );
+}
+
+export default BookingApp;
