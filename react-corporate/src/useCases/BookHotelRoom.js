@@ -1,4 +1,6 @@
 
-export default function bookHotelRoom(employeeId, hotelId, roomType, checkInDate, checkOutDate) {
-    return 'ASDFG-123';
+export default function bookHotelRoom(booking) {
+    booking.id = 'ASDFG-123';
+
+    return booking;
 }

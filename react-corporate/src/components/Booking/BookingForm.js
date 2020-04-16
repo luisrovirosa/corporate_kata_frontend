@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import BookingDates from './BookingDates';
+import Booking from '../../domain/Booking';
 import RoomType from './RoomType';
 import EmployeeSelector from './EmployeeSelector';
 
@@ -49,13 +50,15 @@ class BookingForm extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    this.props.processForm(
+    const booking = new Booking(
       this.state.employeeId,
       this.state.hotelId,
       this.state.roomTypeId,
       this.state.checkIn,
-      this.state.checkOut
+      this.state.checkOut,
     );
+
+    this.props.processForm(booking);
   };
 
   setEmployee = (employeeId) => {

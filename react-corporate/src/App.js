@@ -7,13 +7,13 @@ import bookHotelRoom from './useCases/BookHotelRoom';
 function BookingApp() {
   const [booking, setBooking] = useState(undefined);
 
-  const processForm = (...args) => {
-    setBooking(bookHotelRoom(...args));
+  const processForm = (booking) => {
+    setBooking(bookHotelRoom(booking));
   }
 
   return (
     booking
-      ? <BookingConfirmation bookingId={booking} />
+      ? <BookingConfirmation bookingId={booking.id} />
       : <BookingForm processForm={processForm} />
   );
 }
