@@ -24,9 +24,32 @@ class Button extends Component {
 }
 
 class BookingForm extends Component {
+  constructor(props) {
+    super(props);
+
+    const dayAfterTomorrow = new Date();
+    const numberOfDaysToAdd = 2;
+    dayAfterTomorrow.setDate(dayAfterTomorrow.getDate() + numberOfDaysToAdd);
+
+    this.state = {
+      employeeId: 'hugo',
+      hotelId: undefined,
+      roomTypeId: undefined,
+      checkIn: new Date(),
+      checkOut: dayAfterTomorrow,
+    };
+  }
+
   handleSubmit = (event) => {
     event.preventDefault();
   };
+
+  setEmployee = (employeeId) => {
+    this.setState({
+      employeeId: employeeId,
+    });
+  };
+
   /*  @TODO:
   1- Empleado
   2- Hotel
@@ -38,7 +61,10 @@ class BookingForm extends Component {
       <form onSubmit={this.handleSubmit}>
         <h1>BookingForm</h1>
         <div>
-          <EmployeeSelector></EmployeeSelector>
+          <EmployeeSelector
+            value={this.state.employeeId}
+            onChange={this.setEmployee}
+          ></EmployeeSelector>
         </div>
         <div>
           <HotelSelector></HotelSelector>
