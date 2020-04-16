@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import BookingDates from './BookingDates';
 import RoomType from './RoomType';
 import EmployeeSelector from './EmployeeSelector';
+import bookHotelRoom from '../../useCases/BookHotelRoom';
 
 class HotelSelector extends Component {
   render() {
@@ -14,10 +15,6 @@ class HotelSelector extends Component {
 }
 
 class Button extends Component {
-  constructor(prop) {
-    super(prop);
-  }
-
   render() {
     return <button>{this.props.children}</button>;
   }
@@ -33,8 +30,8 @@ class BookingForm extends Component {
 
     this.state = {
       employeeId: 'hugo',
-      hotelId: undefined,
-      roomTypeId: undefined,
+      hotelId: 'FOUR_SEASONS_HAWAI_BEACH',
+      roomTypeId: 'DOUBLE',
       checkIn: new Date(),
       checkOut: dayAfterTomorrow,
     };
@@ -42,6 +39,15 @@ class BookingForm extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
+    const booking = bookHotelRoom(
+      this.state.employeeId,
+      this.state.hotelId,
+      this.state.roomTypeId,
+      this.state.checkIn,
+      this.state.checkOut
+    );
+
+    console.log(booking);
   };
 
   setEmployee = (employeeId) => {
