@@ -5,7 +5,23 @@ import EmployeeSelector from './EmployeeSelector';
 
 class HotelSelector extends Component {
   render() {
-    return 'HotelSelector';
+    return (
+      <select>
+        <option value="121221" selected>
+          Four Seasons Hawai beach
+        </option>
+      </select>
+    );
+  }
+}
+
+class Button extends Component {
+  constructor(prop) {
+    super(prop);
+  }
+
+  render() {
+    return <button>{this.props.children}</button>;
   }
 }
 
@@ -18,7 +34,7 @@ class BookingForm extends Component {
   5- Confirmar */
   render() {
     return (
-      <>
+      <form>
         <h1>BookingForm</h1>
         <div>
           <EmployeeSelector></EmployeeSelector>
@@ -32,7 +48,8 @@ class BookingForm extends Component {
         <div>
           <BookingDates></BookingDates>
         </div>
-      </>
+        <Button>Book</Button>
+      </form>
     );
   }
 }

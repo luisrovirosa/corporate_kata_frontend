@@ -2,7 +2,14 @@ import React, { Component } from 'react';
 
 class BookingDates extends Component {
   render() {
-    return 'BookingDates';
+    return (
+      <section>
+        <label>Check-in</label>
+        <input type="date" value="2020-10-20" />
+        <label>Check-out</label>
+        <input type="date" value="2020-10-22" />
+      </section>
+    );
   }
 }
 
