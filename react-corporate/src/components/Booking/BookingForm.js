@@ -1,8 +1,7 @@
-import React, { Component, useState, useEffect } from 'react';
+import React, { Component } from 'react';
 import BookingDates from './BookingDates';
 import RoomType from './RoomType';
 import EmployeeSelector from './EmployeeSelector';
-import bookHotelRoom from '../../useCases/BookHotelRoom';
 
 class HotelSelector extends Component {
   render() {
@@ -92,19 +91,4 @@ class BookingForm extends Component {
   }
 }
 
-
-function BookingApp() {
-  const [booking, setBooking] = useState(undefined);
-
-  const processForm = (...args) => {
-    setBooking(bookHotelRoom(...args))
-  }
-
-  return (
-    booking
-      ? <BookingConfirmation bookingId={booking} />
-      : <BookingForm processForm={processForm}/>
-  );
-}
-
-export default BookingApp;
+export {BookingForm, BookingConfirmation};
