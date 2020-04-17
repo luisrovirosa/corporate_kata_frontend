@@ -3,7 +3,7 @@ import BookingDatesInput from './BookingDatesInput';
 import Booking from '../../domain/Booking';
 import RoomTypeSelector from './RoomTypeSelector';
 import EmployeeSelector from './EmployeeSelector';
-
+import BookingDates from '../../domain/BookingDates';
 class HotelSelector extends Component {
   render() {
     return (
@@ -43,8 +43,7 @@ class BookingForm extends Component {
       employeeId: 'hugo',
       hotelId: 'FOUR_SEASONS_HAWAI_BEACH',
       roomTypeId: 'DOUBLE',
-      checkIn: new Date(),
-      checkOut: dayAfterTomorrow,
+      bookingDates: new BookingDates(new Date(), dayAfterTomorrow),
     };
   }
 
@@ -54,8 +53,7 @@ class BookingForm extends Component {
       this.state.employeeId,
       this.state.hotelId,
       this.state.roomTypeId,
-      this.state.checkIn,
-      this.state.checkOut
+      this.state.bookingDates
     );
 
     this.props.processForm(booking);
@@ -98,10 +96,8 @@ class BookingForm extends Component {
           </div>
           <div>
             <BookingDatesInput
-              checkIn={this.state.checkIn}
-              onChangeCheckIn={this.setCheckInDate}
-              checkOut={this.state.checkOut}
-              onChangeCheckOut={this.setCheckOutDate}
+              value={this.state.bookingDates}
+              onChange={(bookingDates) => this.setState({ bookingDates })}
             ></BookingDatesInput>
           </div>
           <Button>Book</Button>

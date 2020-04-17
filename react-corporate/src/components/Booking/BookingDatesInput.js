@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import BookingDates from '../../domain/BookingDates';
 
 class BookingDatesInput extends Component {
   formatDate(date) {
@@ -17,11 +18,21 @@ class BookingDatesInput extends Component {
   }
 
   handlerCheckIn = (event) => {
-    this.props.onChangeCheckIn(this.parseDate(event.target.value));
+    this.props.onChange(
+      new BookingDates(
+        this.parseDate(event.target.value),
+        this.props.value.checkOut
+      )
+    );
   };
 
   handlerCheckOut = (event) => {
-    this.props.onChangeCheckOut(this.parseDate(event.target.value));
+    this.props.onChange(
+      new BookingDates(
+        this.props.value.checkIn,
+        this.parseDate(event.target.value)
+      )
+    );
   };
 
   render() {
@@ -30,14 +41,14 @@ class BookingDatesInput extends Component {
         <label>Check-in</label>
         <input
           type="date"
-          value={this.formatDate(this.props.checkIn)}
+          value={this.formatDate(this.props.value.checkIn)}
           onChange={this.handlerCheckIn}
         />
         <label>Check-out</label>
         <input
           type="date"
-          value={this.formatDate(this.props.checkOut)}
-          min={this.formatDate(this.props.checkIn)}
+          value={this.formatDate(this.props.value.checkOut)}
+          min={this.formatDate(this.props.value.checkIn)}
           onChange={this.handlerCheckOut}
         />
       </section>
