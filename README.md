@@ -19,8 +19,20 @@
     * [Swagger + Imposter](https://medium.com/@outofcoffee/mocking-apis-with-swagger-and-imposter-3694bd1733c0)
 
 ### How to call the remote Server API
+#### Example against Swagger stub server
  ```
 curl --location --request POST 'https://virtserver.swaggerhub.com/islomar/CorporateHotelBooking/1.0.0/booking' \
+-H "accept: application/json" -H "Content-Type: application/json" \
+-d '{
+    "employeeId": "John Smith",
+    "hotelId": "FOUR_SEASONS_HAWAI_BEACH",
+    "roomType": "JUNIOR_SUITE"
+}' -vvv
+ ```
+
+#### Example against Postman stub server
+  ```
+curl --location --request POST 'https://00f83f5c-c689-41d8-a487-5c403fb1235e.mock.pstmn.io/booking' \
 -H "accept: application/json" -H "Content-Type: application/json" \
 -d '{
     "employeeId": "John Smith",
