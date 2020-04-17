@@ -40,41 +40,25 @@ class BookingForm extends Component {
     dayAfterTomorrow.setDate(dayAfterTomorrow.getDate() + numberOfDaysToAdd);
 
     this.state = {
-      employeeId: 'hugo',
-      hotelId: 'FOUR_SEASONS_HAWAI_BEACH',
-      roomTypeId: 'DOUBLE',
-      bookingDates: new BookingDates(new Date(), dayAfterTomorrow),
+      booking: new Booking(
+        'hugo',
+        'FOUR_SEASONS_HAWAI_BEACH',
+        'DOUBLE',
+        new BookingDates(new Date(), dayAfterTomorrow)
+      ),
     };
   }
 
   handleSubmit = (event) => {
     event.preventDefault();
-    const booking = new Booking(
-      this.state.employeeId,
-      this.state.hotelId,
-      this.state.roomTypeId,
-      this.state.bookingDates
-    );
 
-    this.props.processForm(booking);
+    this.props.processForm(this.state.booking);
   };
 
   setEmployee = (employeeId) => {
-    this.setState({
-      employeeId: employeeId,
-    });
-  };
-
-  setCheckInDate = (checkInDate) => {
-    this.setState({
-      checkIn: checkInDate,
-    });
-  };
-
-  setCheckOutDate = (checkOutDate) => {
-    this.setState({
-      checkOut: checkOutDate,
-    });
+    const booking = this.state.booking;
+    booking.employeeId = employeeId;
+    this.setState({ booking });
   };
 
   render() {
@@ -84,7 +68,7 @@ class BookingForm extends Component {
           <h1>BookingForm</h1>
           <div>
             <EmployeeSelector
-              value={this.state.employeeId}
+              value={this.state.booking.employeeId}
               onChange={this.setEmployee}
             ></EmployeeSelector>
           </div>
@@ -96,12 +80,21 @@ class BookingForm extends Component {
           </div>
           <div>
             <BookingDatesInput
-              value={this.state.bookingDates}
-              onChange={(bookingDates) => this.setState({ bookingDates })}
+              value={this.state.booking.bookingDates}
+              onChange={(bookingDates) => {
+                const booking = this.state.booking;
+                booking.bookingDates = bookingDates;
+
+                this.setState({ booking });
+              }}
             ></BookingDatesInput>
           </div>
           <Button>Book</Button>
         </form>
+
+        <p>Empleado: {this.state.booking.employeeId}</p>
+        <p>CheckIn: {this.state.booking.bookingDates.checkIn.toString()}</p>
+        <p>CheckOut: {this.state.booking.bookingDates.checkOut.toString()}</p>
       </>
     );
   }
