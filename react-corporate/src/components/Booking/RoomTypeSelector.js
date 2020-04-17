@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class RoomType extends Component {
+class RoomTypeSelector extends Component {
   render() {
     return (
       <select defaultValue="3312">
@@ -10,4 +10,4 @@ class RoomType extends Component {
   }
 }
 
-export default RoomType;
+export default RoomTypeSelector;

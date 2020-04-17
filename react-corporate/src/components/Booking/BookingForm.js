@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import BookingDates from './BookingDates';
+import BookingDatesInput from './BookingDatesInput';
 import Booking from '../../domain/Booking';
-import RoomType from './RoomType';
+import RoomTypeSelector from './RoomTypeSelector';
 import EmployeeSelector from './EmployeeSelector';
 
 class HotelSelector extends Component {
@@ -94,15 +94,15 @@ class BookingForm extends Component {
             <HotelSelector></HotelSelector>
           </div>
           <div>
-            <RoomType></RoomType>
+            <RoomTypeSelector></RoomTypeSelector>
           </div>
           <div>
-            <BookingDates
+            <BookingDatesInput
               checkIn={this.state.checkIn}
               onChangeCheckIn={this.setCheckInDate}
               checkOut={this.state.checkOut}
               onChangeCheckOut={this.setCheckOutDate}
-            ></BookingDates>
+            ></BookingDatesInput>
           </div>
           <Button>Book</Button>
         </form>

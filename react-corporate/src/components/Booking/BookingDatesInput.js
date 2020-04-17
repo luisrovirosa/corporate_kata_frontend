@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class BookingDates extends Component {
+class BookingDatesInput extends Component {
   formatDate(date) {
     let month = '' + (date.getMonth() + 1);
     let day = '' + date.getDate();
@@ -45,4 +45,4 @@ class BookingDates extends Component {
   }
 }
 
-export default BookingDates;
+export default BookingDatesInput;
