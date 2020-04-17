@@ -56,8 +56,8 @@ components:
           type: string
           example: DOUBLE          
       example:
-        employeeId: Widget Adapter
-        hotelId: d290f1ee-6c54-4b01-90e6-d701748f0851
+        employeeId: JOSE_CABRERA
+        hotelId: FOUR_SEASONS_HAWAI_BEACH
         roomType: DOUBLE            
     BookingResponse:
       type: object
