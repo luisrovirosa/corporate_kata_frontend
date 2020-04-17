@@ -85,7 +85,7 @@ class BookingForm extends Component {
             <RoomType></RoomType>
           </div>
           <div>
-            <BookingDates></BookingDates>
+            <BookingDates checkIn={this.state.checkIn} checkOut={this.state.checkOut}></BookingDates>
           </div>
           <Button>Book</Button>
         </form>
