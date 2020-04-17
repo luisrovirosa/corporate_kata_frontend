@@ -31,7 +31,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/BookingResponse' 
               example: 
-                bookingId: EUREKA_ID
+                bookingId: EUREKA5
         "400":
           description: invalid input, object invalid
         "409":
@@ -64,6 +64,6 @@ components:
       properties:
         bookingId:
           type: string
-          example: EUREKA
+          example: EUREKA6
       example:
-        bookingId: EUREKA
+        bookingId: EUREKA6
