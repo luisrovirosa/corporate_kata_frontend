@@ -21,9 +21,10 @@
 ### How to call the remote Server API
  ```
 curl --location --request POST 'https://virtserver.swaggerhub.com/islomar/CorporateHotelBooking/1.0.0/booking' \
---data-raw '{
+-H "accept: application/json" -H "Content-Type: application/json" \
+-d '{
     "employeeId": "John Smith",
     "hotelId": "FOUR_SEASONS_HAWAI_BEACH",
     "roomType": "JUNIOR_SUITE"
-}'
+}' -vvv
  ```
