@@ -19,7 +19,7 @@ class BookingDatesInput extends Component {
 
   handlerCheckIn = (event) => {
     this.props.onChange(
-      new BookingDates(
+      BookingDates(
         this.parseDate(event.target.value),
         this.props.value.checkOut
       )
@@ -28,10 +28,7 @@ class BookingDatesInput extends Component {
 
   handlerCheckOut = (event) => {
     this.props.onChange(
-      new BookingDates(
-        this.props.value.checkIn,
-        this.parseDate(event.target.value)
-      )
+      BookingDates(this.props.value.checkIn, this.parseDate(event.target.value))
     );
   };
 

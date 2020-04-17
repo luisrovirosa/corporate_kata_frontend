@@ -1,11 +1,10 @@
-class Booking {
-  constructor(employeeId, hotelId, roomType, bookingDates) {
-    this.id = undefined;
-    this.employeeId = employeeId;
-    this.hotelId = hotelId;
-    this.roomType = roomType;
-    this.bookingDates = bookingDates;
-  }
-}
+const Booking = (employeeId, hotelId, roomType, bookingDates) => {
+  return {
+    employeeId,
+    hotelId,
+    roomType,
+    bookingDates,
+  };
+};
 
 export default Booking;

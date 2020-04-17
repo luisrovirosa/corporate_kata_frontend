@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 
 class EmployeeSelector extends Component {
   render() {
-    /* 1 - Nombre;
-    2 - id;
-    3- handlerChange
-    */
     return (
       <select
         value={this.props.value}

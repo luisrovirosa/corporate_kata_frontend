@@ -4,6 +4,9 @@ import Booking from '../../domain/Booking';
 import RoomTypeSelector from './RoomTypeSelector';
 import EmployeeSelector from './EmployeeSelector';
 import BookingDates from '../../domain/BookingDates';
+import { update } from '../../domain/behavior';
+import { updateBookingDates } from '../../domain/bookingDatesBehavior';
+
 class HotelSelector extends Component {
   render() {
     return (
@@ -40,11 +43,11 @@ class BookingForm extends Component {
     dayAfterTomorrow.setDate(dayAfterTomorrow.getDate() + numberOfDaysToAdd);
 
     this.state = {
-      booking: new Booking(
+      booking: Booking(
         'hugo',
         'FOUR_SEASONS_HAWAI_BEACH',
         'DOUBLE',
-        new BookingDates(new Date(), dayAfterTomorrow)
+        BookingDates(new Date(), dayAfterTomorrow)
       ),
     };
   }
@@ -56,9 +59,8 @@ class BookingForm extends Component {
   };
 
   setEmployee = (employeeId) => {
-    const booking = this.state.booking;
-    booking.employeeId = employeeId;
-    this.setState({ booking });
+    const newBooking = update(this.state.booking, { employeeId });
+    this.setState({ booking: newBooking });
   };
 
   render() {
@@ -82,10 +84,13 @@ class BookingForm extends Component {
             <BookingDatesInput
               value={this.state.booking.bookingDates}
               onChange={(bookingDates) => {
-                const booking = this.state.booking;
-                booking.bookingDates = bookingDates;
+                const newBookingDates = update(
+                  this.state.booking.bookingDates,
+                  { bookingDates }
+                );
+                const newBooking = update(this.state.booking, { bookingDates });
 
-                this.setState({ booking });
+                this.setState({ booking: newBooking });
               }}
             ></BookingDatesInput>
           </div>
