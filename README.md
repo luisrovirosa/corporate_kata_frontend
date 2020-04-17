@@ -9,7 +9,7 @@
     * Documentation: https://app.swaggerhub.com/apis-docs/islomar/CorporateHotelBooking/1.0.0
     * More info: https://app.swaggerhub.com/help/apis/generating-code/server-stub
 * Further integration can be made with **Postman**, e.g. https://habitissimo2030.postman.co/collections/2082328-2486361f-19a7-4aa6-9094-08197ec99cd2
-    * The spec file can be synchronized withe the GitHub/Gitlab repo: https://learning.postman.com/docs/integrations/gitlab/
+    * The spec file can be synchronized withe the GitHub/Gitlab repo: https://learning.postman.com/docs/integrations/gitlab/ Each time an update is done from Postman, it gets commited to the repo (and viceversa).
     * https://learning.postman.com/docs/postman/collections/examples/
     * Mock servers: https://habitissimo2030.postman.co/workspaces/bebd0212-9d63-4cad-8b33-0cfb9744bb13/mocks
 * There are VS code extensions, e.g. https://marketplace.visualstudio.com/items?itemName=42Crunch.vscode-openapi
