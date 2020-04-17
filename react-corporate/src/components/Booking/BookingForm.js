@@ -27,7 +27,7 @@ class BookingConfirmation extends Component {
         <h1>Tu reserva se ha confirmado</h1>
         <p>Localizador de tu reserva: {this.props.bookingId}</p>
       </>
-    )
+    );
   }
 }
 
@@ -55,7 +55,7 @@ class BookingForm extends Component {
       this.state.hotelId,
       this.state.roomTypeId,
       this.state.checkIn,
-      this.state.checkOut,
+      this.state.checkOut
     );
 
     this.props.processForm(booking);
@@ -64,6 +64,18 @@ class BookingForm extends Component {
   setEmployee = (employeeId) => {
     this.setState({
       employeeId: employeeId,
+    });
+  };
+
+  setCheckInDate = (checkInDate) => {
+    this.setState({
+      checkIn: checkInDate,
+    });
+  };
+
+  setCheckOutDate = (checkOutDate) => {
+    this.setState({
+      checkOut: checkOutDate,
     });
   };
 
@@ -85,7 +97,12 @@ class BookingForm extends Component {
             <RoomType></RoomType>
           </div>
           <div>
-            <BookingDates checkIn={this.state.checkIn} checkOut={this.state.checkOut}></BookingDates>
+            <BookingDates
+              checkIn={this.state.checkIn}
+              onChangeCheckIn={this.setCheckInDate}
+              checkOut={this.state.checkOut}
+              onChangeCheckOut={this.setCheckOutDate}
+            ></BookingDates>
           </div>
           <Button>Book</Button>
         </form>
@@ -94,4 +111,4 @@ class BookingForm extends Component {
   }
 }
 
-export {BookingForm, BookingConfirmation};
+export { BookingForm, BookingConfirmation };

@@ -12,15 +12,33 @@ class BookingDates extends Component {
     return [year, month, day].join('-');
   }
 
+  parseDate(stringDate) {
+    return new Date(stringDate);
+  }
+
+  handlerCheckIn = (event) => {
+    this.props.onChangeCheckIn(this.parseDate(event.target.value));
+  };
+
+  handlerCheckOut = (event) => {
+    this.props.onChangeCheckOut(this.parseDate(event.target.value));
+  };
+
   render() {
     return (
       <section>
         <label>Check-in</label>
-        <input type="date" defaultValue={this.formatDate(this.props.checkIn)} />
+        <input
+          type="date"
+          value={this.formatDate(this.props.checkIn)}
+          onChange={this.handlerCheckIn}
+        />
         <label>Check-out</label>
         <input
           type="date"
-          defaultValue={this.formatDate(this.props.checkOut)}
+          value={this.formatDate(this.props.checkOut)}
+          min={this.formatDate(this.props.checkIn)}
+          onChange={this.handlerCheckOut}
         />
       </section>
     );
