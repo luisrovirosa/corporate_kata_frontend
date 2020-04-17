@@ -1,0 +1,69 @@
+openapi: 3.0.0
+info:
+  title: Corporate Hotel Booking API
+  description: HTTP API for the Corporate Hotel Booking service
+  contact:
+    email: islomar@gmail.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+servers:
+- url: https://virtserver.swaggerhub.com/islomar/CorporateHotelBooking/1.0.0
+  description: SwaggerHub API Auto Mocking
+paths:
+  /booking:
+    post:
+      summary: create a booking
+      description: Adds an item to the system
+      operationId: saveBooking  
+      requestBody:
+        description: Booking item to add
+        content:
+          application/json:
+            schema:
+                  $ref: '#/components/schemas/BookingRequest'
+      responses:
+        "201":
+          description: booking created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BookingResponse' 
+              example: 
+                bookingId: EUREKA
+        "400":
+          description: invalid input, object invalid
+        "409":
+          description: an identical booking already exists
+      x-swagger-router-controller: Developers
+components:
+  schemas:
+    BookingRequest:
+      required:
+        - employeeId
+        - hotelId
+        - roomType
+      type: object
+      properties:
+        employeeId:
+          type: string
+          example: JOSE_CABRERA
+        hotelId:
+          type: string
+          example: FOUR_SEASONS_HAWAI_BEACH            
+        roomType:
+          type: string
+          example: DOUBLE          
+      example:
+        employeeId: Widget Adapter
+        hotelId: d290f1ee-6c54-4b01-90e6-d701748f0851
+        roomType: DOUBLE            
+    BookingResponse:
+      type: object
+      properties:
+        bookingId:
+          type: string
+          example: EUREKA
+      example:
+        bookingId: EUREKA
