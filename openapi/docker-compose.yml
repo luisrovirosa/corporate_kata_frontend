@@ -1,0 +1,10 @@
+version: '3.0'
+
+services:
+  swagger_mock:
+    container_name: swagger_mock
+    image: swaggermock/swagger-mock
+    environment:
+      SWAGGER_MOCK_SPECIFICATION_URL: 'https://raw.githubusercontent.com/luisrovirosa/corporate_kata_frontend/master/openapi/corporate-hotel-api.yaml'
+    ports:
+      - "8080:8080"
