@@ -3,7 +3,7 @@ info:
   title: Corporate Hotel Booking API
   description: HTTP API for the Corporate Hotel Booking service
   contact:
-    email: islomar@gmail.com
+    email: islomar@gmail.es
   license:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
@@ -11,8 +11,6 @@ info:
 servers:
 - url: https://virtserver.swaggerhub.com/islomar/CorporateHotelBooking/1.0.0
   description: SwaggerHub API Auto Mocking
-- url: http://127.0.0.1:8080/v1
-  description: Local Mocking
 paths:
   /booking:
     post:
@@ -33,7 +31,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/BookingResponse' 
               example: 
-                bookingId: f727fd25-864e-3a7b-9fbf-d2d852fdac1b
+                bookingId: EUREKA42
         "400":
           description: invalid input, object invalid
         "409":
@@ -42,11 +40,11 @@ paths:
 components:
   schemas:
     BookingRequest:
-      type: object
       required:
         - employeeId
         - hotelId
         - roomType
+      type: object
       properties:
         employeeId:
           type: string
@@ -66,7 +64,6 @@ components:
       properties:
         bookingId:
           type: string
-          format: uuid
-          example: f727fd25-864e-3a7b-9fbf-d2d852fdac1b
+          example: EUREKA6
       example:
-        bookingId: f727fd25-864e-3a7b-9fbf-d2d852fdac1b
+        bookingId: EUREKA6
