@@ -3,7 +3,7 @@ info:
   title: Corporate Hotel Booking API
   description: HTTP API for the Corporate Hotel Booking service
   contact:
-    email: islomar@gmail.es
+    email: islomar@gmail.com
   license:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
